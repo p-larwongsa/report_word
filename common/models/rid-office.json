@@ -1,0 +1,28 @@
+{
+  "name": "rid_office",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "office_name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Form1": {
+      "type": "hasMany",
+      "model": "Form1",
+      "foreignKey": "office_id"
+    },
+    "Form2": {
+      "type": "hasMany",
+      "model": "Form2",
+      "foreignKey": "office_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

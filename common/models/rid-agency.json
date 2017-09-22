@@ -1,0 +1,28 @@
+{
+  "name": "rid_agency",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "agency_name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Form1": {
+      "type": "hasMany",
+      "model": "Form1",
+      "foreignKey": "agency_id"
+    },
+    "Form2": {
+      "type": "hasMany",
+      "model": "Form2",
+      "foreignKey": "agency_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

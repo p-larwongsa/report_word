@@ -1,0 +1,63 @@
+{
+  "name": "Form1",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "office_id": {
+      "type": "number"
+    },
+    "agency_id": {
+      "type": "number"
+    },
+    "province": {
+      "type": "string"
+    },
+    "SPK_time": {
+      "type": "number"
+    },
+    "SPK_person": {
+      "type": "number"
+    },
+    "JMC_time": {
+      "type": "number"
+    },
+    "JMC_person": {
+      "type": "number"
+    },
+    "news": {
+      "type": "number"
+    },
+    "form1_date": {
+      "type": "string"
+    },
+    "user_edit": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Uploads": {
+      "type": "hasMany",
+      "model": "Uploads",
+      "foreignKey": "form1_id"
+    },
+    "rid_office": {
+      "type": "belongsTo",
+      "model": "rid_office",
+      "foreignKey": "office_id"
+    },
+    "rid_agency": {
+      "type": "belongsTo",
+      "model": "rid_agency",
+      "foreignKey": "agency_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
