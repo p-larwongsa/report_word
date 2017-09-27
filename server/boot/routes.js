@@ -219,5 +219,8 @@ app.get('/auth/google/callback', function(req, res, next) {
     } // else
   }); //get logout
 
+app.get('/img', function(req,res){
+  res.render('pages/img.html');
+});
 
 }

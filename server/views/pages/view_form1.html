@@ -283,10 +283,15 @@
           return moment(date).format("YYYY:MM:DD HH:mm");
         } 
       },
-      { data : "id" , render : function(data) {
+      /*{ data : "id" , render : function(data) {
         //return '<div class="input-group"><span class="input-group-btn"><a href="/edit_form1?id='+data+'" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a></span><span class="input-group-btn"><a href="/delete_form1?id='+data+'" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a></span></div>'
 
         return '<div class="input-group"><span class="input-group-btn"><a onClick="edit('+data+')" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a></span><span class="input-group-btn"><a onClick="deleteForm1('+data+')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a></span></div>'
+
+        }
+      }*/
+      { data : "id" , render : function(data) {
+        return '<a onClick="edit('+data+')" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>'
 
         }
       }
