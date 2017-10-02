@@ -24,13 +24,51 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
 </nav>
+{% if page_form %}
 <div class="container">
-  <a class="breadcrumb-item" href="/"> Home /</a>
-  <a class="breadcrumb-item" href="/formPage"> Form /</a>
-  <a class="breadcrumb-item" href="/view_form?view=form1"> Form1 /</a>
-  <a class="breadcrumb-item" href="/view_form?view=form2"> Form2 /</a>
-  <a class="breadcrumb-item" href="/projectPage"> Flowto Report</a>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Form</li>
+    </ul>
 </div>
+{%endif%}
+{% if page_form1 %}
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/formPage">Form</a></li>
+        <li class="active">Form1</li>
+    </ul>
+</div>
+{%endif%}
+{% if page_form2 %}
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/formPage">Form</a></li>
+        <li class="active">Form2</li>
+    </ul>
+</div>
+{%endif%}
+{% if page_flowto %}
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/formPage">Form</a></li>
+        <li class="active">Flowto Report</li>
+    </ul>
+</div>
+{%endif%}
+{% if RPobj %}
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/formPage">Form</a></li>
+        <li><a href="/projectPage">Flowto Project</a></li>
+        <li class="active">{{RPobj.name.projectName}}</li>
+    </ul>
+</div>
+{%endif%}
 
 {% else %}
 <!-- Static navbar -->

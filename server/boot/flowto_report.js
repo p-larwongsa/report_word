@@ -22,8 +22,9 @@ app.get('/projectPage',function(req, res, next) {
 
       projects.find({},function(err,data){
         var lists = data;
+        var page_flowto = "flowto";
         console.log(lists);
-        res.render('pages/project.html', { user: user ,lists : lists});   
+        res.render('pages/project.html', { user: user ,lists : lists, page_flowto:page_flowto});   
       });      
     }
 });

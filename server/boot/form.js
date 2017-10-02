@@ -34,7 +34,8 @@ app.get('/formPage',function(req, res, next) {
       var offices = callback;
       rid_agency.find({},function(err,callback){
         var agencys = callback;
-        res.render('pages/form.html', {user:user, date:date, offices:offices, agencys:agencys});
+        var page_form = "form";
+        res.render('pages/form.html', {user:user, date:date, offices:offices, agencys:agencys, page_form:page_form});
       });  
     });
     
@@ -83,14 +84,16 @@ app.get('/view_form',function(req, res, next) {
       },function(err,data){
         var lists = data; 
         console.log(data);
-        res.render('pages/view_form1.html', {user:user, lists:lists});
+        var page_form1 = "form1";
+        res.render('pages/view_form1.html', {user:user, lists:lists, page_form1:page_form1});
       });
 
     }if(view == 'form2'){
         console.log('form2');
         form2.find({},function(err,data){
           var lists = data;
-          res.render('pages/view_form2.html', { user: user ,lists : lists});
+          var page_form2 = "form2";
+          res.render('pages/view_form2.html', { user: user ,lists : lists, page_form2:page_form2});
         });
       }
     }else{
@@ -388,5 +391,37 @@ app.post('/delete_form2', function(req, res){
   });
 });
 
+/*-------------------- */
+app.post('/filter_WaterManagementInField', function(req,res,next){
+  var office_id = req.body.InputOfficeName;
+  var agency_id = req.body.InputAgencyName;
+  var user = {};
+    user.email = req.cookies['email'];
+    user.username = req.cookies['username'];
+    user.officeName = req.cookies['office_Name'];
+    user.agencyName = req.cookies['agency_Name'];
+    console.log('filter_WaterManagementInField');
+    console.log(office_id);
+    console.log(agency_id);
+    /*if(req.cookies['access_token']){
+      form2.find({
+        where:{and: [
+          {"office_id": office_id}, 
+          {"agency_id" : agency_id}
+        ]},
+        include: ['rid_agency', 'rid_office']
+      },function(err,data){
+        var lists = data; 
+        console.log(data);
+        res.render('pages/view_form2.html', {user:user, lists:lists});
+      }); 
+    }else{
+      return res.sendStatus(401);
+    }*/
+});
+
+app.get('/field',function(req,res){
+  res.render('pages/WaterManagementInField.html');
+});
 
 }
