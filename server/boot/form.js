@@ -420,8 +420,8 @@ app.post('/filter_WaterManagementInField', function(req,res,next){
     }*/
 });
 
-app.get('/field',function(req,res){
-  res.render('pages/WaterManagementInField.html');
+app.get('/img',function(req,res){
+  res.render('pages/img.html');
 });
 
 }

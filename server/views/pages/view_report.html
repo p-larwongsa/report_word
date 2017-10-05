@@ -3,7 +3,11 @@
 
 <div class="container">
 <h1>{{RBbody.title}}</h1>
-{{RBbody.description | safe }}
+<p>{{RBbody.description | safe }}</p>
+</div>
+
+<div class="container">
+<p>{{RBbody.footer | safe }}</p>
 </div>
 
 {%endblock%}

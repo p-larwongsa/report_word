@@ -2,23 +2,80 @@
 {%block content%}
 
 <div class="container">
-	<h3> รายงานเรื่อง {{data.title}}</h3>
 
 	<form method="post" action="/cksave">
-	<input type="hidden" name="RP_id" id="RP_id" value={{data.id}} />
-	<input type="hidden" name="title" id="title" value={{data.title}} />
-	<input type="hidden" name="project_id" id="project_id" value={{data.projectId}} />
-    
+
+  <div class="form-group">
+    <label for="report_title">รายงานเรื่อง</label> : 
+    <input type="text" class="form-control" id="report_title" name="report_title" value="{{data.title}}" />
+  </div>
+	
+    <div class="row">
+      {% if data.description %}
+        <textarea name="description" id="description" rows="10" cols="80">
+        {{data.description}}
+      </textarea>
+      {% else %}
+        <textarea name="description" id="description" rows="10" cols="80">
+          This is my textarea to be replaced with CKEditor.
+        </textarea>
+      {% endif %}
+    </div>
+    <br>
+    <div class="row">
+      <div class="jumbotron">
+        <h1>Download Image</h1> 
+        <div class="container">
+  <div class="field" align="left">
+    <h3>Upload your images</h3>
+    <input type="file" id="files" name="files[]" multiple />
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+  if (window.File && window.FileList && window.FileReader) {
+    $("#files").on("change", function(e) {
+      var files = e.target.files,
+        filesLength = files.length;
+      for (var i = 0; i < filesLength; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+          var file = e.target;
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"remove\">Remove image</span>" +
+            "</span>").insertAfter("#files");
+          $(".remove").click(function(){
+            $(this).parent(".pip").remove();
+          });
+                    
+        });
+        fileReader.readAsDataURL(f);
+      }
+    });
+  } else {
+    alert("Your browser doesn't support to File API")
+  }
+});
+</script>
+      </div>
+    </div>
+    <br>
+    <div class="row">
     {% if data.description %}
-      <textarea name="description" id="description" rows="10" cols="80">
-    	{{data.description}}
+      <textarea name="footer" id="footer" rows="10" cols="80">
+      {{data.footer}}
       </textarea>
     {% else %}
-      <textarea name="description" id="description" rows="10" cols="80">
+      <textarea name="footer" id="footer" rows="10" cols="80">
         This is my textarea to be replaced with CKEditor.
       </textarea>
     {% endif %}
-    
+    </div>
+    <input type="hidden" name="RP_id" id="RP_id" value={{data.id}} />
+    <input type="hidden" name="title" id="title" value={{data.title}} />
+    <input type="hidden" name="project_id" id="project_id" value={{data.projectId}} />
     </br>
     <div>
       <button type="submit" id="save"><span>บันทึก</span></button>
@@ -33,6 +90,13 @@
       //uiColor: '#14B8C4', // set up ckeditor color 
       /*toolbar: [
       	{name: 'clipboard', items: ['Cut', 'Copy', 'Paste']}
+      ]*/
+    });
+
+  CKEDITOR.replace( 'footer', {
+      //uiColor: '#14B8C4', // set up ckeditor color 
+      /*toolbar: [
+        {name: 'clipboard', items: ['Cut', 'Copy', 'Paste']}
       ]*/
     });
  	

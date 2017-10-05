@@ -173,13 +173,16 @@ app.get('/modify',function(req, res, next) {
 app.post('/cksave',function(req, res) {
   console.log(req.body);
   var data = req.body.description;
-
+  var footer = req.body.footer;
+  var title = req.body.report_title;
 //var date = moment().format();
   var theReport = {
     "id" : req.body.RP_id,
+    "title" : title,
     "user_id" : req.cookies['userId'],
     "projectId" : req.body.project_id,
-    "description" : data
+    "description" : data,
+    "footer" : footer
   };
   console.log(theReport);
   reports.upsert(theReport, function(err, callback) {

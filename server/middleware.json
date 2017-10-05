@@ -42,9 +42,9 @@
   },
   "files": {
     "loopback#static": [
-      { "name" : "js",
-        "paths": "/js",
-        "params": "$!../js"
+      { "name" : "etc",
+        "paths": "/etc",
+        "params": "$!../etc"
       },
       {
         "name" : "uploads",

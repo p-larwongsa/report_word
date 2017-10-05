@@ -223,4 +223,12 @@ app.get('/img', function(req,res){
   res.render('pages/img.html');
 });
 
+app.get('/date', function(req,res){
+  res.render('pages/date.html');
+});
+
+app.get('/date2', function(req,res){
+  res.render('pages/date2.html');
+});
+
 }

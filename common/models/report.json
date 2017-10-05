@@ -12,6 +12,9 @@
     "description": {
       "type": "string"
     },
+    "footer": {
+      "type": "string"
+    },
     "projectId": {
       "type": "number"
     },
