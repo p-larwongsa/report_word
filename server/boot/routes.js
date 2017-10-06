@@ -231,4 +231,8 @@ app.get('/date2', function(req,res){
   res.render('pages/date2.html');
 });
 
+app.get('/vis', function(req,res){
+  res.render('pages/vis.html');
+});
+
 }
