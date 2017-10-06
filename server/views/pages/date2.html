@@ -8,12 +8,8 @@ var getDate = function( startDate, endDate ){
     	end   = moment(endDate), // Nov. 2nd
     	day = "";
 	var result = [];
-	var count = 0, // total date
-		count_left = 0;  
-	var day_list = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-	var day_name = "", 
-	    day_index = 0,
-	    start_week = "", 
+	var count = 0; // total date
+	var start_week = "", 
 	    end_week = "";
 	var day_lastweek = "",
 	    lastday = "",
@@ -22,17 +18,14 @@ var getDate = function( startDate, endDate ){
 	var current = start.clone();
 	while (current.isBefore(end) || current.isSame(end)) {
 	  count = end.diff(start, 'days')+1; // total date
-	  var d = current.clone().format('e');
-	  day_name = day_list[d];
-	  day_index = (6-d); // index of day_list
-	  day_week = day_index+1 // day of week
+	  var day_week = 30 // day of week
 	 
 	  var obj = {};
 	    obj.week = current.clone().format('LLLL');
 	  start_week = current.clone().format('DD/MMM/YYYY');
 	  current.add(day_week, 'days'); 
-	  
-      day = current.clone().add(-1, 'days');
+
+	   day = current.clone().add(-1, 'days');
       if(day.isBefore(end) || day.isSame(end)){
       	end_week = day.format('DD/MMM/YYYY');
       	obj.day = day_week;
@@ -41,19 +34,19 @@ var getDate = function( startDate, endDate ){
       	lastweek_count = day.diff(end.clone(), 'days');
       	day_lastweek = day.add(-lastweek_count, 'days');
       	lastday = day_lastweek.format('DD/MMM/YYYY');
-      	obj.day = 7 - lastweek_count;
+      	obj.day = day_week - lastweek_count;
       	obj.lable = start_week + "-" + lastday;
       }
+
 	  result.push(obj);
 	}
 	console.log("total date : "+count);
-	console.log("day_index : "+day_index);
 	console.log("day of week : "+day_week);
 	console.log(lastweek_count);
 	return result;
 }
 
-var result = getDate(new Date("2017,1,1"), new Date("2017,3,1"));
+var result = getDate(new Date("2017,1,1"), new Date("2017,3,2"));
 console.log(result);
 
 </script>
